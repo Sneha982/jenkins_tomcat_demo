@@ -10,7 +10,7 @@ pipeline {
         
         stage('checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vcjain/jenkins_tomcat_demo.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sneha982/jenkins_tomcat_demo.git']])
             }    
         }
         stage('Build'){
@@ -23,7 +23,7 @@ pipeline {
             steps{
                 echo 'Deploying on Tomcat '
                 sshagent(['tomcat-key']) {
-                    sh 'scp -v -o StrictHostKeyChecking=no target/demowar-0.0.1-SNAPSHOT.war ubuntu@3.83.18.21:/opt/tomcat/webapps'
+                    sh 'scp -v -o StrictHostKeyChecking=no target/demowar-0.0.1-SNAPSHOT.war ubuntu@3.84.168.220:/opt/tomcat/webapps'
                 }
             }
         }
